@@ -102,3 +102,7 @@ fabric.properties
 .idea/vcs.xml
 src/test/
 target/
+!/hb-01-one-to-one-uni.iml
+.idea/hb-01-one-to-one-bidi.iml
+.idea/hb-03-one-to-many.iml
+hb-01-one-to-one-uni.iml
