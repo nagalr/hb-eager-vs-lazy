@@ -2,8 +2,7 @@ import com.example.data.HibernateUtil;
 import com.example.domain.Course;
 import com.example.domain.Instructor;
 import org.hibernate.Session;
-
-import java.util.List;
+import org.hibernate.query.Query;
 
 /**
  * Created by ronnen on 18-Jan-2021
@@ -62,13 +61,28 @@ public class App2 {
             // start a transaction
             session2.beginTransaction();
 
-            // the retrieval part, testing Eager vs Lazy
-            Instructor inst = session2.get(Instructor.class, 1L);
+            Long theId = 1L;
 
-            List<Course> courses = inst.getCourses();
+            // option1 using HQL
+            Query<Instructor> query =
+                    session2.createQuery("select i from Instructor i " +
+                            "join fetch i.courses " +
+                            "where i.id=:theInstructorId", Instructor.class);
+
+            query.setParameter("theInstructorId", theId);
+
+            Instructor instructor = query.getSingleResult();
+
+            System.out.println("***** Query-Outcome: " + instructor);
+
+            // option2, the same outcome, no HQL
+            // the retrieval part, testing Eager vs Lazy
+//            Instructor inst = session2.get(Instructor.class, 1L);
+
+//            List<Course> courses = inst.getCourses();
 
             // executing this line will load the courses (LAZY)
-            System.out.println("***** Courses: " + courses);
+//            System.out.println("***** Courses: " + courses);
 
             // commit the transaction
             session2.getTransaction().commit();
