@@ -2,7 +2,8 @@ import com.example.data.HibernateUtil;
 import com.example.domain.Course;
 import com.example.domain.Instructor;
 import org.hibernate.Session;
-import org.hibernate.query.Query;
+
+import java.util.List;
 
 /**
  * Created by ronnen on 18-Jan-2021
@@ -64,24 +65,24 @@ public class App2 {
             Long theId = 1L;
 
             // option1 using HQL, will load courses as well, even on 'LAZY' mode
-            Query<Instructor> query =
-                    session2.createQuery("select i from Instructor i " +
-                            "join fetch i.courses " +
-                            "where i.id=:theInstructorId", Instructor.class);
+//            Query<Instructor> query =
+//                    session2.createQuery("select i from Instructor i " +
+//                            "join fetch i.courses " +
+//                            "where i.id=:theInstructorId", Instructor.class);
+//
+//            query.setParameter("theInstructorId", theId);
+//
+//            Instructor instructor = query.getSingleResult();
+//
+//            System.out.println("***** Query-Outcome: " + instructor);
 
-            query.setParameter("theInstructorId", theId);
-
-            Instructor instructor = query.getSingleResult();
-
-            System.out.println("***** Query-Outcome: " + instructor);
-
-            // option2, the same outcome, no HQL
+            // option2, no HQL
             // the retrieval part, testing Eager vs Lazy
-//            Instructor inst = session2.get(Instructor.class, 1L);
+            Instructor inst = session2.get(Instructor.class, 1L);
 
-//            List<Course> courses = inst.getCourses();
+            List<Course> courses = inst.getCourses();
 
-            // executing this line will load the courses (LAZY)
+            // executing this line will load the courses (LAZY Mode)
 //            System.out.println("***** Courses: " + courses);
 
             // commit the transaction
@@ -89,6 +90,8 @@ public class App2 {
 
             session2.close();
 
+            // the courses still available after closing the session
+//            System.out.println("***** After Closing session Courses: " + courses);
 
         } catch (Exception e) {
             System.out.println("[ERROR] error while opening the session: " + e);
