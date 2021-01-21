@@ -63,7 +63,7 @@ public class App2 {
 
             Long theId = 1L;
 
-            // option1 using HQL
+            // option1 using HQL, will load courses as well, even on 'LAZY' mode
             Query<Instructor> query =
                     session2.createQuery("select i from Instructor i " +
                             "join fetch i.courses " +
