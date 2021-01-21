@@ -43,7 +43,7 @@ public class HibernateUtil {
             properties.put(Environment.URL, "jdbc:mysql://localhost:8889/hb-03-one-to-many");
             properties.put(Environment.USER, "root");
             properties.put(Environment.PASS, "root");
-            properties.put(Environment.FORMAT_SQL, "false");
+            properties.put(Environment.FORMAT_SQL, "true");
             properties.put(Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect");
             properties.put(Environment.SHOW_SQL, "true");
             properties.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");

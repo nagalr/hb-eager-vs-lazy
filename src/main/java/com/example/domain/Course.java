@@ -18,7 +18,8 @@ public class Course {
     @Column(name = "title")
     private String title;
 
-    @ManyToOne(cascade = {CascadeType.DETACH,
+    @ManyToOne(fetch = FetchType.EAGER,
+                cascade = {CascadeType.DETACH,
                             CascadeType.MERGE,
                             CascadeType.PERSIST,
                             CascadeType.REFRESH} )

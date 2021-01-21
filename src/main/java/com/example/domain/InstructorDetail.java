@@ -29,12 +29,12 @@ public class InstructorDetail {
     @Column(name = "hobby")
     private String hobby;
 
-    @OneToOne(mappedBy = "instructorDetail",
-                cascade = {CascadeType.DETACH,
-                            CascadeType.MERGE,
-                            CascadeType.REFRESH,
-                            CascadeType.PERSIST})
-    private Instructor instructor;
+//    @OneToOne(mappedBy = "instructorDetail",
+//                cascade = {CascadeType.DETACH,
+//                            CascadeType.MERGE,
+//                            CascadeType.REFRESH,
+//                            CascadeType.PERSIST})
+//    private Instructor instructor;
 
     public InstructorDetail() {
     }
@@ -44,13 +44,13 @@ public class InstructorDetail {
         this.hobby = hobby;
     }
 
-    public Instructor getInstructor() {
-        return instructor;
-    }
-
-    public void setInstructor(Instructor instructor) {
-        this.instructor = instructor;
-    }
+//    public Instructor getInstructor() {
+//        return instructor;
+//    }
+//
+//    public void setInstructor(Instructor instructor) {
+//        this.instructor = instructor;
+//    }
 
     public Long getId() {
         return id;

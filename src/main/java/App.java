@@ -25,7 +25,7 @@ public class App {
                     new InstructorDetail("myYouTube", "Golf");
 
             // associate the objects
-            instructor.setInstructorDetail(instructorDetail);
+//            instructor.setInstructorDetail(instructorDetail);
 
             // start a transaction
             session.beginTransaction();
