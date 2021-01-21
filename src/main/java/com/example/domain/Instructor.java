@@ -40,10 +40,11 @@ public class Instructor {
     private InstructorDetail instructorDetail;
 
     @OneToMany(mappedBy = "instructor",
-            cascade = {CascadeType.DETACH,
-                    CascadeType.MERGE,
-                    CascadeType.PERSIST,
-                    CascadeType.REFRESH})
+               fetch = FetchType.EAGER,
+               cascade = {CascadeType.DETACH,
+                            CascadeType.MERGE,
+                            CascadeType.PERSIST,
+                            CascadeType.REFRESH})
     @Column(name = "courses")
     private List<Course> courses;
 
